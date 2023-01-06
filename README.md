@@ -66,7 +66,7 @@ This is (almost) a complete Relying Party that will spit out your profile in JSO
 ```js
 const express = require('express')
 const app = express()
-const { auth, requiresAuth } = require('express-openid-connect')
+const { auth } = require('express-openid-connect')
 const jwt = require('jsonwebtoken')
 app.use(auth({
   authorizationParams: {
