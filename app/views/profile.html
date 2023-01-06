@@ -1,0 +1,93 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Profile – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        User profile
+      </h1>
+
+      <dl class="govuk-summary-list">
+
+        {% for n in user.core_identity.vc.credentialSubject.name %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% for p in n.nameParts %}
+              {{ p.value }}
+            {% endfor %}
+            {% if n.validUntil %}
+              (until {{ n.validUntil }})
+            {% endif %}
+          </dd>
+        </div>
+        {% endfor %}
+
+        {% if user.core_identity.vc.credentialSubject.birthDate[0].value %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ user.core_identity.vc.credentialSubject.birthDate[0].value }}
+          </dd>
+        </div>
+        {% endif %}
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ user.email }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Email verified
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ user.email_verified }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ user.phone_number }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Phone number verified
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ user.phone_number_verified }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Subject (pairwise ID)
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ user.sub }}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+{% endblock %}

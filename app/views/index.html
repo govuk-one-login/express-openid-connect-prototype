@@ -9,13 +9,26 @@ Home – {{serviceName}} – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
-
     <h1 class="govuk-heading-xl">
       {{ serviceName }}
     </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <p>This proof-of-concept integrates the <a href="https://prototype-kit.service.gov.uk/">GOV.UK Prototype Kit</a>
+      with <a href="https://www.sign-in.service.gov.uk/">GOV.UK One Login</a> using Auth0's
+      <a href="https://github.com/auth0/express-openid-connect">express-openid-connect</a> npm library.</p>
+
+    <p>The user experience is hardly Alton Towers: you log in, you get your profile. But see <code>/app/routes.js</code>
+    to see how little configuration is required to get your Express prototype integrated as a Relying Party.</p>
+
+    <p>See README.md in the project root for more information.</p>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+    {{ govukButton({
+      text: "Sign in",
+      href: "/login",
+      isStartButton: true
+    }) }}
+
   </div>
 </div>
 

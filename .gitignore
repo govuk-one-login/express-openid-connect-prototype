@@ -10,3 +10,6 @@ usage-data-config.json
 # General ignores
 .DS_Store
 .idea
+
+# PaaS manifest
+manifest.yml
