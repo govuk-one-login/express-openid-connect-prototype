@@ -61,12 +61,13 @@ and browse to https://localhost:3000
 
 ## Bonus: a quick round of code golf
 
-This is (almost) a complete Relying Party that will spit out your profile in JSON:
+This is a complete Relying Party that will spit out your profile in JSON:
 
 ```js
 const express = require('express')
 const app = express()
 const { auth } = require('express-openid-connect')
+const port = process.env.PORT || 3000
 app.use(auth({
   authorizationParams: {
     response_type: 'code',
@@ -79,5 +80,5 @@ app.get('/', async (req, res) => {
   userinfo = await req.oidc.fetchUserInfo()
   res.json(userinfo)
 })
-app.listen(8080)
+app.listen(port)
 ```
