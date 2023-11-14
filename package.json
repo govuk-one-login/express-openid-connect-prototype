@@ -8,6 +8,6 @@
     "express-openid-connect": "2.17.1",
     "govuk-frontend": "^4.4.1",
     "govuk-prototype-kit": "13.15.0",
-    "jsonwebtoken": "^9.0.0"
+    "jsonwebtoken": "9.0.2"
   }
 }
