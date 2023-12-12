@@ -63,7 +63,7 @@ The GOV.UK One Login integration environment supports `localhost` as a Relying P
     npm install
     npm run dev
 
-and browse to https://localhost:3000
+and browse to http://localhost:3000
 
 ## Bonus: a quick round of code golf
 
