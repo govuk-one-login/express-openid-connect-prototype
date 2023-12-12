@@ -28,7 +28,7 @@ The Client ID of your Relying Party, which you should have received when you reg
 
     SECRET
 
-A long, random string used to encrypt the session cooke.  You can generate one with `openssl rand -base64 32`
+A long, random string used to encrypt the session cookie.  You can generate one with `openssl rand -base64 32`
 
     RSA_PRIVATE_KEY
 
