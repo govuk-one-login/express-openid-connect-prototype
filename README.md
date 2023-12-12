@@ -7,13 +7,16 @@ with [GOV.UK One Login](https://www.sign-in.service.gov.uk/) using Auth0's
 The user experience is hardly Alton Towers: you log in, you get your profile. But see [/app/routes.js](app/routes.js)
 to see how little configuration is required to get your Express prototype integrated as a Relying Party.
 
+> [!TIP]
+> You can register this prototype as a Relying Party using the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register).
+
 ## Environment variables
 
 The Prototype requires the following environment variables:
 
     ISSUER_BASE_URL
 
-Likely to be https://oidc.integration.account.gov.uk or similar
+In testing, this will be https://oidc.integration.account.gov.uk
 
     BASE_URL
 
@@ -50,9 +53,12 @@ Likely to be https://identity.integration.account.gov.uk
 
 The RSA Public Key of the Credential Issuer (i.e. the above host)
 
+> [!NOTE]
+> Identity Proofing and Verification is not currently available to services registered using the [self-service admin tool](https://admin.sign-in.service.gov.uk/).
+
 ## Running locally
 
-Unless you really know what you're doing, you're going to find it hard to run a working Relying Party on localhost.  But to start the Prototype Kit:
+The GOV.UK One Login integration environment supports `localhost` as a Relying Party.  When registering your prototype, ensure you set the Redirect URI to `http://localhost:3000/callback`.  Then, to start your prototype:
 
     npm install
     npm run dev
