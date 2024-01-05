@@ -8,7 +8,7 @@ The user experience is hardly Alton Towers: you log in, you get your profile. Bu
 to see how little configuration is required to get your Express prototype integrated as a Relying Party.
 
 > [!TIP]
-> You can register this prototype as a Relying Party using the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register).
+> If you have an email address in the `gov.uk` domain or [other selected domains](https://raw.githubusercontent.com/govuk-one-login/onboarding-self-service-experience/main/express/resources/allowed-email-domains.txt)  you can register your copy of this prototype as a Relying Party for 'authentication only' using the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register).
 
 ## Environment variables
 
@@ -54,7 +54,11 @@ Likely to be https://identity.integration.account.gov.uk
 The RSA Public Key of the Credential Issuer (i.e. the above host)
 
 > [!NOTE]
-> Identity Proofing and Verification is not currently available to services registered using the [self-service admin tool](https://admin.sign-in.service.gov.uk/).
+> Identity Proofing and Verification is not currently available to services registered using the [self-service admin tool](https://admin.sign-in.service.gov.uk/). 
+> 
+> For help configuring your app contact the GOV.UK One Login onboarding team via:
+>  - [#govuk-one-login](https://ukgovernmentdigital.slack.com/archives/C02AQUJ6WTC) on cross government Slack
+> - [the support form](https://www.sign-in.service.gov.uk/contact-us) (say you need help configuring a client using the https://github.com/govuk-one-login/express-openid-connect-prototype prototype in the 'how can we help' field.)
 
 ## Running locally
 
