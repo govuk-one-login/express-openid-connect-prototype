@@ -1,6 +1,6 @@
-# GOV.UK Prototype + express-openid-connect + GOV.UK One Login
+# GOV.UK Prototype Kit + Auth0 express-openid-connect + GOV.UK One Login
 
-This proof-of-concept integrates the [GOV.UK Prototype Kit](https://prototype-kit.service.gov.uk/)
+This Node.js proof-of-concept integrates the [GOV.UK Prototype Kit](https://prototype-kit.service.gov.uk/)
 with [GOV.UK One Login](https://www.sign-in.service.gov.uk/) using Auth0's
 [express-openid-connect](https://github.com/auth0/express-openid-connect) `npm` module.
 
@@ -8,11 +8,15 @@ The user experience is hardly Alton Towers: you log in, you get your profile. Bu
 to see how little configuration is required to get your Express prototype integrated as a Relying Party.
 
 > [!TIP]
-> If you have an email address in the `gov.uk` domain or [other selected domains](https://raw.githubusercontent.com/govuk-one-login/onboarding-self-service-experience/main/express/resources/allowed-email-domains.txt)  you can register your copy of this prototype as a Relying Party for 'authentication only' using the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register).
+> If you have an email address in the `gov.uk` domain or [other selected domains](https://raw.githubusercontent.com/govuk-one-login/onboarding-self-service-experience/main/express/resources/allowed-email-domains.txt) you can register your copy of this prototype as a Relying Party for 'authentication only' using the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register).
 
 ## Environment variables
 
-The Prototype requires the following environment variables:
+The Prototype uses the [dotenv](https://www.npmjs.com/package/dotenv) npm package to load configuration variables from a `.env` file. Read the [`.env` example](example.env.txt) to see what the file should look like. The Client ID and keys will need to be replaced for your application.
+
+### Required environment variables
+
+The following environment variables must be defined:
 
     ISSUER_BASE_URL
 
@@ -20,7 +24,7 @@ In testing, this will be https://oidc.integration.account.gov.uk
 
     BASE_URL
 
-The base URL of wherever you are hosting this prototype.  It should have been registered as a Relying Party with GOV.UK One Login.
+The base URL of wherever you are hosting this prototype.  It should have been registered as a Relying Party with GOV.UK One Login. In testing locally this will be http://localhost:3000
 
     CLIENT_ID
 
@@ -37,7 +41,7 @@ The private key of the keypair you generated when registering your Relying Party
     openssl genrsa -out private.pem 2048
     openssl rsa -in private.pem -pubout
 
-(Obviously) only supply the public key to the OP.  The private key should remain just that.
+Only supply the public key when registering you client. The private key should remain just that.
 
 ### Optional environment variables
 
@@ -49,16 +53,18 @@ Set this to the string `"true"` if you want Identity Proofing and Verification. 
 
 Likely to be https://identity.integration.account.gov.uk
 
-    SPOT_PUBLIC_KEY
+
+    CREDENTIAL_ISSUER_RSA_PUBLIC_KEY
 
 The RSA Public Key of the Credential Issuer (i.e. the above host)
+
+The technical documentation explains [how to aquire the RSA Public Key of the Credential Issuer](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/prove-users-identity/)
 
 > [!NOTE]
 > Identity Proofing and Verification is not currently available to services registered using the [self-service admin tool](https://admin.sign-in.service.gov.uk/). 
 > 
-> For help configuring your app contact the GOV.UK One Login onboarding team via:
->  - [#govuk-one-login](https://ukgovernmentdigital.slack.com/archives/C02AQUJ6WTC) on cross government Slack
-> - [the support form](https://www.sign-in.service.gov.uk/contact-us) (say you need help configuring a client using the https://github.com/govuk-one-login/express-openid-connect-prototype prototype in the 'how can we help' field.)
+> For help configuring your app for identity proving please contact the GOV.UK One Login onboarding team via:
+> [`#govuk-one-login`](https://ukgovernmentdigital.slack.com/archives/C02AQUJ6WTC) channel on cross government Slack or [the support form](https://www.sign-in.service.gov.uk/contact-us), explain that you need help configuring a client using the `https://github.com/govuk-one-login/express-openid-connect-prototype` prototype in the 'how can we help' field.)
 
 ## Running locally
 

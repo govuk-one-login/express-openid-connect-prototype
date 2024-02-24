@@ -21,7 +21,7 @@
  *
  * which makes the following required:
  *
- * SPOT_PUBLIC_KEY=PUBLIC_KEY_FROM_IDENTITY_PROOFING
+ * CREDENTIAL_ISSUER_RSA_PUBLIC_KEY=PUBLIC_KEY_FROM_IDENTITY_PROOFING
  *
  */
 const govukPrototypeKit = require('govuk-prototype-kit')
@@ -71,7 +71,7 @@ router.get('/profile', requiresAuth(), async (req, res, next) => {
 
   if (core_id_jwt) {
 
-    const pubkey = process.env.SPOT_PUBLIC_KEY
+    const pubkey = process.env.CREDENTIAL_ISSUER_RSA_PUBLIC_KEY
     const verification_options = {
       algorithms: ["ES256"],
       issuer: process.env.CREDENTIAL_ISSUER_URL,
