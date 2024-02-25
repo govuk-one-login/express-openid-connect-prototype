@@ -80,7 +80,7 @@ router.get('/profile', requiresAuth(), async (req, res, next) => {
 
     jwt.verify(core_id_jwt, pubkey, verification_options, (err, decoded) => {
       if (err) {
-        next(`Could not validate coreIdentityJWT: ${err}`)
+        next(err)
       }
       userinfo.core_identity = decoded // so the "profile" template can parse it
     })
@@ -88,7 +88,7 @@ router.get('/profile', requiresAuth(), async (req, res, next) => {
     // because if we requested it, we would get it. If the user fails to
     // prove their identity, they would be stopped with an error before
     // being returned to the Relying Party.
-
+}, (req, res) => {
   res.locals.user = userinfo
   res.render('profile')
 })
