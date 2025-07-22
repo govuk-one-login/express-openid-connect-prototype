@@ -5,9 +5,9 @@
     "start": "govuk-prototype-kit start"
   },
   "dependencies": {
-    "express-openid-connect": "2.18.0",
+    "express-openid-connect": "2.18.1",
     "govuk-frontend": "^4.4.1",
-    "govuk-prototype-kit": "^13.16.0",
+    "govuk-prototype-kit": "^13.17.0",
     "jsonwebtoken": "9.0.2"
   }
 }

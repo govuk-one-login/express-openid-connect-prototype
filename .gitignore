@@ -13,3 +13,4 @@ usage-data-config.json
 
 # PaaS manifest
 manifest.yml
+package-lock.json
